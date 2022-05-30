@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomeScreen(),
     );
   }
@@ -20,128 +20,278 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          children: [
-            Image.network(
-              'https://cdn.pixabay.com/photo/2020/03/17/12/02/vietnam-4940068_1280.jpg',
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width,
-              height: 150,
-            ),
-            const ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-            ),
-            Divider(
-              height: 10,
-            ),
-            const ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            Divider(),
-            const ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Notifications'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            Divider(
-              height: 10,
-            ),
-            const ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            const Spacer(),
-            const ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: const Text('Flutter'),
-        centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.settings),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 0, top: 0),
-        child: Center(
-          child: PhysicalModel(
-            elevation: 10,
-            shadowColor: Colors.grey,
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.red,
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.pink,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      // BoxShadow(
-                      //   color: Colors.grey,
-                      //   offset: Offset(0, 2),
-                      //   blurRadius: 10,
-                      //   spreadRadius: 3,
-                      // ),
-                    ]),
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    /// text
                     Container(
-                        padding: EdgeInsets.only(left: 10),
-                        // color: Colors.black,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              'The mobile apps that use Material Design',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              'primary options for navigation. These navigations are Tabs and Drawers',
-                              style: TextStyle(
-                                  color: Colors.white70, fontSize: 11),
-                            )
-                          ],
-                        )),
-
-                    /// image
-                    Expanded(
-                      child: Image.network(
-                        'https://pa.media/wp-content/uploads/2021/05/social-media-digital.png',
-                        fit: BoxFit.cover,
-                        // width: MediaQuery.of(context).size.width * 0.4,
+                      width: 30,
+                      height: 50,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: Color(0xFFe5e5e5)),
+                      child: const Icon(
+                        Icons.menu,
+                        color: Colors.white,
+                        size: 12,
                       ),
+                    ),
+                    Row(
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.only(right: 30),
+                          child: Icon(Icons.notifications),
+                        ),
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2C_xadF4WT19MkU5PpYyU8njyMgMIuttwXQ&usqp=CAU'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Welcome Back',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                    Text(
+                      'Creative Mints',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.search),
+                              filled: true,
+                              border: InputBorder.none),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Icon(
+                                  Icons.currency_exchange,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  'Transactions',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  '7 items',
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.white70),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.pink,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Icon(
+                                  Icons.currency_exchange,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  'Transactions',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  '7 items',
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.white70),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.currency_exchange,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  'Transactions',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  '7 items',
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.white70),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.pink,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.currency_exchange,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  'Transactions',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  '7 items',
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.white70),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Text(
+                    'Choose  a categories',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.home),
+                              Text('Branch Services'),
+                            ],
+                          )),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.home),
+                              Text('Branch Services'),
+                            ],
+                          )),
                     )
                   ],
-                )),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-/// create a stateless or stateful
