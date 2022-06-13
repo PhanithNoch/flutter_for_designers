@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_for_designer/screens/button_screen.dart';
+import 'package:flutter_for_designer/screens/first_screen.dart';
+import 'package:flutter_for_designer/screens/gridview_screen.dart';
+import 'package:flutter_for_designer/screens/home_screen.dart';
+import 'package:flutter_for_designer/screens/notificatino_screen.dart';
+import 'package:flutter_for_designer/screens/profile_screen.dart';
+import 'package:flutter_for_designer/screens/second_scren.dart';
+import 'package:flutter_for_designer/screens/stack_widget_screen.dart';
+
+import 'example_screen.dart';
 
 void main() {
   runApp(Home());
@@ -9,287 +19,129 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      routes: {
+        '/': (context) => ExampleScreen(),
+        'notification': (context) => NotificationScreen(),
+        'profile': (context) => ProfileScreen(),
+        'button_screen': (context) => ButtonScreen(),
+        'gridview_screen': (context) => GridViewScreen(),
+        'first_screen': (context) => FirstScreen(),
+        'second_screen': (context) => SecondScreen(),
+        'stack_screen': (context) => StackWidgetScreen(),
+      },
+      initialRoute: 'stack_screen',
+      // home: HomeScreen(),
+      // home: ExampleScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreens extends StatelessWidget {
+  HomeScreens({Key? key}) : super(key: key);
+  final usernameController = TextEditingController(text: 'mario@gmail.com');
+  final passwordController = TextEditingController(text: '123');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf8f7ff),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 30,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Color(0xFFe5e5e5)),
-                      child: const Icon(
-                        Icons.menu,
-                        color: Colors.white,
-                        size: 12,
-                      ),
-                    ),
-                    Row(
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(right: 30),
-                          child: Icon(Icons.notifications),
-                        ),
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2C_xadF4WT19MkU5PpYyU8njyMgMIuttwXQ&usqp=CAU'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Welcome Back',
-                      style: TextStyle(fontSize: 22),
-                    ),
-                    Text(
-                      'Creative Mints',
-                      style: TextStyle(fontSize: 22),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.search),
-                              filled: true,
-                              border: InputBorder.none),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Icon(
-                                  Icons.currency_exchange,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  'Transactions',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.white),
-                                ),
-                                Text(
-                                  '7 items',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Colors.white70),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Icon(
-                                  Icons.currency_exchange,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  'Transactions',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.white),
-                                ),
-                                Text(
-                                  '7 items',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Colors.white70),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.currency_exchange,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  'Transactions',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.white),
-                                ),
-                                Text(
-                                  '7 items',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Colors.white70),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.currency_exchange,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  'Transactions',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.white),
-                                ),
-                                Text(
-                                  '7 items',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Colors.white70),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25),
-                  child: Text(
-                    'Choose  a categories',
-                    style: TextStyle(fontSize: 18),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/courselist.png',
+                    width: 200,
                   ),
+                ],
+              ),
+            ),
+            Column(
+              children: const [
+                Text(
+                  'Welcome Back!',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.home),
-                              Text('Branch Services'),
-                            ],
-                          )),
-                    ),
-                    Expanded(
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.home),
-                              Text('Branch Services'),
-                            ],
-                          )),
-                    )
-                  ],
+                Text(
+                  'Log in to your existant account of Q allure',
+                  style: TextStyle(fontSize: 9, color: Colors.grey),
                 ),
               ],
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Forgot Password',
+                          style: TextStyle(fontSize: 11),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Login',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.blue),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.blue),
+                            ),
+                          ),
+                        )),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
